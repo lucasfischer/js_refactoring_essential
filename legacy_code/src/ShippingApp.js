@@ -3,9 +3,8 @@ import { ShippingCalculator } from "./ShippingCalculator.js";
 async function main() {
     const args = process.argv.slice(2);
 
-
     if (args.length !== 1) {
-        console.log("Usage: node ShippingApp.js <orderId>");
+        console.log("Usage: node ShippingApp.js <orderId>");sdpigufawdvuasdov
         return;
     }
 
