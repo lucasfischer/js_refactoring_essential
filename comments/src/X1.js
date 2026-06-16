@@ -1,0 +1,19 @@
+export class X1 {
+    static m(q, z) {
+        let p = 0;
+
+        // Iterate from lower bound (q) to upper bound (z)
+        for (let i = q; i <= z; i++) {
+            // Add square of each number in the range
+            p += X1.n(i);
+        }
+
+        // Return accumulated sum
+        return p;
+    }
+
+    static n(k) {
+        // Return square of input
+        return k * k;
+    }
+}
