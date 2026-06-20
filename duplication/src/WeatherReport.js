@@ -53,6 +53,10 @@ export class Forecast {
         return this.windSpeed;
     }
 
+    getPeriod() {
+        return this.period;
+    }
+
     isMorning() {
         return this.period === "morning";
     }
