@@ -1,9 +1,9 @@
 export class X1 {
-    static m(q, z) {
+    static m(lower_bound, z) {
         let p = 0;
 
         // Iterate from lower bound (q) to upper bound (z)
-        for (let i = q; i <= z; i++) {
+        for (let i = lower_bound; i <= z; i++) {
             // Add square of each number in the range
             p += X1.square(i);
         }
