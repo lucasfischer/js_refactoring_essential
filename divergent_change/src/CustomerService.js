@@ -9,13 +9,19 @@ export class EmailValidator {
     }
 }
 
+export class CustomerDisplayFormatter {
+    static name(firstName, lastName) {
+        return firstName.trim() + " " + lastName.trim().toUpperCase();
+    }
+}
+
 export class CustomerService {
     isValidEmail(email) {
         return EmailValidator.isValid(email);
     }
 
     formatDisplayName(firstName, lastName) {
-        return firstName.trim() + " " + lastName.trim().toUpperCase();
+        return CustomerDisplayFormatter.name(firstName, lastName);
     }
 
     calculateLoyaltyPoints(numberOfPurchases) {
