@@ -2,8 +2,17 @@ import { strict as assert } from "assert";
 import {ShippingCalculator, fetchOrderDetails} from "../src/ShippingCalculator.js";
 
 async function orderCost(orderId) {
-    const calculator = new ShippingCalculator(fetchOrderDetails);
+    const calculator = new ShippingCalculator(mockFetchOrderDetails);
     return await calculator.calculateShipping(orderId);
+}
+
+async function mockFetchOrderDetails(orderId) {
+    let orders = {
+        1001: { "orderId": 1001, "shippingType": "STANDARD", "weightKg": 5, "distanceKm": 120, "fragile": false },
+        1002: { "orderId": 1002, "shippingType": "EXPRESS", "weightKg": 8.5, "distanceKm": 300, "fragile": true },
+        1003: {"orderId":1003,"shippingType":"OVERNIGHT","weightKg":2,"distanceKm":50,"fragile":false}
+    }
+    return orders[orderId]
 }
 
 describe("ShippingCalculator", () => {
