@@ -27,8 +27,10 @@ export class AccountStatusService {
     }
 }
 
-function calculateLoyaltyPoints(numberOfPurchases) {
-    return numberOfPurchases * 10;
+export class LoyaltyService {
+    static calculateLoyaltyPoints(numberOfPurchases) {
+        return numberOfPurchases * 10;
+    }
 }
 
 export class CustomerService {
@@ -41,7 +43,7 @@ export class CustomerService {
     }
 
     calculateLoyaltyPoints(numberOfPurchases) {
-        return calculateLoyaltyPoints(numberOfPurchases);
+        return LoyaltyService.calculateLoyaltyPoints(numberOfPurchases);
     }
 
     determineAccountStatus(daysSinceLastLogin) {
