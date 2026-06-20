@@ -30,7 +30,7 @@ export async function fetchOrderDetails(orderId) {
     return await response.json();
 }
 
-function calculateShippingCost(order) {
+export function calculateShippingCost(order) {
     switch (order.shippingType) {
         case "STANDARD":
             return order.weightKg * 0.5;

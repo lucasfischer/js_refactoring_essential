@@ -1,12 +1,12 @@
 import { strict as assert } from "assert";
-import {ShippingCalculator, fetchOrderDetails} from "../src/ShippingCalculator.js";
+import {ShippingCalculator, calculateShippingCost} from "../src/ShippingCalculator.js";
 
 async function orderCost(orderId) {
     const calculator = new ShippingCalculator(mockFetchOrderDetails);
     return await calculator.calculateShipping(orderId);
 }
 
-async function mockFetchOrderDetails(orderId) {
+function mockFetchOrderDetails(orderId) {
     let orders = {
         1001: { "orderId": 1001, "shippingType": "STANDARD", "weightKg": 5, "distanceKm": 120, "fragile": false },
         1002: { "orderId": 1002, "shippingType": "EXPRESS", "weightKg": 8.5, "distanceKm": 300, "fragile": true },
@@ -14,6 +14,25 @@ async function mockFetchOrderDetails(orderId) {
     }
     return orders[orderId]
 }
+
+describe("calculateShippingCost", () => {
+    it("Order 1001", () => {
+        const order = mockFetchOrderDetails(1001)
+        const cost = calculateShippingCost(order)
+        assert.equal(cost, 2.5);
+    })
+
+    it("Order 1002", async () => {
+        const order = mockFetchOrderDetails(1002)
+        const cost = calculateShippingCost(order)
+        assert.equal(cost, 36.8);
+    })
+    it("Order 1003", async () => {
+        const order = mockFetchOrderDetails(1003)
+        const cost = calculateShippingCost(order)
+        assert.equal(cost, 27.4);
+    })
+})
 
 describe("ShippingCalculator", () => {
     it("Order 1001", async () => {
