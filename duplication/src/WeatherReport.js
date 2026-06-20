@@ -7,29 +7,9 @@ export class WeatherReport {
             const wind = forecast.getWindSpeed();
             const period = forecast.getPeriod().slice(0, 1).toUpperCase() + forecast.getPeriod().slice(1);
 
-            if (forecast.isMorning()) {
-                output.push(
-                    `Morning: ${temp}°C, ${condition}, wind ${wind}km/h`
-                );
-            }
-
-            if (forecast.isAfternoon()) {
-                output.push(
-                    `Afternoon: ${temp}°C, ${condition}, wind ${wind}km/h`
-                );
-            }
-
-            if (forecast.isEvening()) {
-                output.push(
-                    `Evening: ${temp}°C, ${condition}, wind ${wind}km/h`
-                );
-            }
-
-            if (forecast.isNight()) {
-                output.push(
-                    `Night: ${temp}°C, ${condition}, wind ${wind}km/h`
-                );
-            }
+            output.push(
+                `${period}: ${temp}°C, ${condition}, wind ${wind}km/h`
+            );
         }
     }
 }
