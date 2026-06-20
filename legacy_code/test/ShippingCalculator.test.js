@@ -10,7 +10,8 @@ function mockFetchOrderDetails(orderId) {
     let orders = {
         1001: { "orderId": 1001, "shippingType": "STANDARD", "weightKg": 5, "distanceKm": 120, "fragile": false },
         1002: { "orderId": 1002, "shippingType": "EXPRESS", "weightKg": 8.5, "distanceKm": 300, "fragile": true },
-        1003: {"orderId":1003,"shippingType":"OVERNIGHT","weightKg":2,"distanceKm":50,"fragile":false}
+        1003: { "orderId": 1003, "shippingType": "OVERNIGHT", "weightKg": 2, "distanceKm": 50, "fragile": false },
+        1004: {"orderId":1004,"shippingType":"INTERNATIONAL","weightKg": 2,"distanceKm":50,"fragile":false}
     }
     return orders[orderId]
 }
@@ -31,6 +32,11 @@ describe("calculateShippingCost", () => {
         const order = mockFetchOrderDetails(1003)
         const cost = calculateShippingCost(order)
         assert.equal(cost, 27.4);
+    })
+    it("Order 1004", async () => {
+        const order = mockFetchOrderDetails(1004)
+        const cost = calculateShippingCost(order)
+        assert.equal(cost, 3);
     })
 })
 

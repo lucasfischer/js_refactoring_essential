@@ -41,6 +41,9 @@ export function calculateShippingCost(order) {
         case "OVERNIGHT":
             return order.weightKg * 1.2 + 25;
 
+        case "INTERNATIONAL":
+            return order.weightKg * 1.5;
+
         default:
             throw new Error(`Unknown shipping type: ${order.shippingType}`);
     }
