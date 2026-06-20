@@ -12,8 +12,8 @@ export class X1 {
         return p;
     }
 
-    static square(k) {
+    static square(value) {
         // Return square of input
-        return k * k;
+        return value * value;
     }
 }
