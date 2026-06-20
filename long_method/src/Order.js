@@ -7,14 +7,17 @@ export class Order {
         this.#customer = customer;
     }
 
-    summarise() {
-        // Validation
+    validate() {
         if (this.#items == null) {
             throw new Error("Items cannot be null");
         }
         if (this.#items.length === 0) {
             throw new Error("Order must contain items");
         }
+    }
+
+    summarise() {
+        this.validate()
 
         // Subtotal calculation
         let subtotal = 0.0;
