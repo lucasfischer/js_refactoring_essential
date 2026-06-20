@@ -5,14 +5,14 @@ export class X1 {
         // Iterate from lower bound (q) to upper bound (z)
         for (let i = q; i <= z; i++) {
             // Add square of each number in the range
-            p += X1.n(i);
+            p += X1.square(i);
         }
 
         // Return accumulated sum
         return p;
     }
 
-    static n(k) {
+    static square(k) {
         // Return square of input
         return k * k;
     }
