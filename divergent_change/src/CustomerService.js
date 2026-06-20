@@ -27,6 +27,10 @@ export class AccountStatusService {
     }
 }
 
+function calculateLoyaltyPoints(numberOfPurchases) {
+    return numberOfPurchases * 10;
+}
+
 export class CustomerService {
     isValidEmail(email) {
         return EmailValidator.isValid(email);
@@ -37,7 +41,7 @@ export class CustomerService {
     }
 
     calculateLoyaltyPoints(numberOfPurchases) {
-        return numberOfPurchases * 10;
+        return calculateLoyaltyPoints(numberOfPurchases);
     }
 
     determineAccountStatus(daysSinceLastLogin) {
