@@ -15,7 +15,7 @@ async function main() {
         return;
     }
 
-    const calculator = new ShippingCalculator(fetchOrderDetails, calculateShippingCost);
+    const calculator = ShippingCalculator.standard();
 
     try {
         const cost = await calculator.calculateShipping(orderId);

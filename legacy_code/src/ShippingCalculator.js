@@ -2,6 +2,10 @@ export class ShippingCalculator {
 
     #fetchOrderDetails
     #calculateShippingCost
+
+    static standard() {
+        return new ShippingCalculator(fetchOrderDetails, calculateShippingCost)
+    }
     
     constructor(fetchOrderDetails, calculateShippingCost) {
         this.#fetchOrderDetails = fetchOrderDetails
