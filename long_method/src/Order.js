@@ -34,17 +34,19 @@ export class Order {
         return discount
     }
 
+    calculateTax(taxableAmount) {
+        return taxableAmount * 0.20;
+    }
+
     summarise() {
         this.validate()
 
         const subtotal = this.calculateSubtotal()
         const discount = this.calculateDiscount(subtotal)
-
-        // Tax calculation
+        
         const taxableAmount = subtotal - discount;
-        const tax = taxableAmount * 0.20;
-
-        // Total calculation
+        const tax = this.calculateTax(taxableAmount)
+        
         const total = taxableAmount + tax;
 
         return new OrderSummary(subtotal, discount, tax, total);
