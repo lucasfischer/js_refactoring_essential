@@ -4,7 +4,7 @@ export class X1 {
 
         for (let i = lower_bound; i <= upper_bound; i++) {
             // Add square of each number in the range
-            sum += X1.square(i);
+            sum += Math.pow(i, 2)
         }
 
         // Return accumulated sum
