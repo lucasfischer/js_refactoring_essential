@@ -1,10 +1,10 @@
-import { ShippingCalculator } from "./ShippingCalculator.js";
+import { ShippingCalculator, fetchOrderDetails } from "./ShippingCalculator.js";
 
 async function main() {
     const args = process.argv.slice(2);
 
     if (args.length !== 1) {
-        console.log("Usage: node ShippingApp.js <orderId>");sdpigufawdvuasdov
+        console.log("Usage: node ShippingApp.js <orderId>");
         return;
     }
 
@@ -15,7 +15,7 @@ async function main() {
         return;
     }
 
-    const calculator = new ShippingCalculator();
+    const calculator = new ShippingCalculator(fetchOrderDetails);
 
     try {
         const cost = await calculator.calculateShipping(orderId);
