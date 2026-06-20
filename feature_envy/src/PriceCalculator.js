@@ -11,20 +11,13 @@ export class Product {
     }
 
     getFinalPrice() {
-        let price = this.getPrice();
+        let price = this.price;
 
-        if (this.isOnSale()) {
+        if (this.onSale) {
             price = price * 0.8;
         }
 
         return price;
     }
 
-    getPrice() {
-        return this.price;
-    }
-
-    isOnSale() {
-        return this.onSale;
-    }
 }
