@@ -2,7 +2,7 @@ import { strict as assert } from "assert";
 import {ShippingCalculator, calculateShippingCost} from "../src/ShippingCalculator.js";
 
 async function orderCost(orderId) {
-    const calculator = new ShippingCalculator(mockFetchOrderDetails);
+    const calculator = new ShippingCalculator(mockFetchOrderDetails, calculateShippingCost);
     return await calculator.calculateShipping(orderId);
 }
 

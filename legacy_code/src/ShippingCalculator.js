@@ -1,16 +1,17 @@
 export class ShippingCalculator {
 
     #fetchOrderDetails
+    #calculateShippingCost
     
-    constructor(fetchOrderDetails) {
+    constructor(fetchOrderDetails, calculateShippingCost) {
         this.#fetchOrderDetails = fetchOrderDetails
+        this.#calculateShippingCost = calculateShippingCost
     }
     
     async calculateShipping(orderId) {
         try {
             const order = await this.#fetchOrderDetails(orderId);
-
-            return calculateShippingCost(order);
+            return this.#calculateShippingCost(order);
         } catch (e) {
             console.log(e);
             return -1;
