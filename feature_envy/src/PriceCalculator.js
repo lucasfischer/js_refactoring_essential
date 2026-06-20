@@ -5,6 +5,9 @@ export class PriceCalculator {
 }
 
 export class Product {
+    #price
+    #onSale
+    
     constructor(price, onSale) {
         this.price = price;
         this.onSale = onSale;
