@@ -13,7 +13,6 @@ export class X1 {
     }
 
     static square(value) {
-        // Return square of input
         return value * value;
     }
 }
