@@ -9,3 +9,9 @@ export class X1 {
         return sum;
     }
 }
+
+function* range(lower_bound, upper_bound) {
+    for (let i = lower_bound; i <= upper_bound; i++) {
+        yield i
+    }
+}
