@@ -24,18 +24,21 @@ export class Order {
         return subtotal
     }
 
-    summarise() {
-        this.validate()
-
-        const subtotal = this.calculateSubtotal()
-
-        // Discount rules
+    calculateDiscount(subtotal) {
         let discount = 0.0;
         if (this.#customer.isLoyal()) {
             discount = subtotal * 0.10;
         } else if (subtotal > 100) {
             discount = subtotal * 0.05;
         }
+        return discount
+    }
+
+    summarise() {
+        this.validate()
+
+        const subtotal = this.calculateSubtotal()
+        const discount = this.calculateDiscount(subtotal)
 
         // Tax calculation
         const taxableAmount = subtotal - discount;
