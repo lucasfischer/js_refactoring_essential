@@ -1,8 +1,8 @@
 import { strict as assert } from "assert";
-import {ShippingCalculator} from "../src/ShippingCalculator.js";
+import {ShippingCalculator, fetchOrderDetails} from "../src/ShippingCalculator.js";
 
 async function orderCost(orderId) {
-    const calculator = new ShippingCalculator();
+    const calculator = new ShippingCalculator(fetchOrderDetails);
     return await calculator.calculateShipping(orderId);
 }
 

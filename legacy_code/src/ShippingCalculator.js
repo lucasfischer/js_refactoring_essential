@@ -1,7 +1,14 @@
 export class ShippingCalculator {
+
+    #fetchOrderDetails
+    
+    constructor(fetchOrderDetails) {
+        this.#fetchOrderDetails = fetchOrderDetails
+    }
+    
     async calculateShipping(orderId) {
         try {
-            const order = await this.fetchOrderDetails(orderId);
+            const order = await this.#fetchOrderDetails(orderId);
 
             return calculateShippingCost(order);
         } catch (e) {
@@ -9,18 +16,18 @@ export class ShippingCalculator {
             return -1;
         }
     }
+}
 
-    async fetchOrderDetails(orderId) {
-        const response = await fetch(
-            `https://codemanship.co.uk/api/orders.php?orderId=${orderId}`
-        );
+export async function fetchOrderDetails(orderId) {
+    const response = await fetch(
+        `https://codemanship.co.uk/api/orders.php?orderId=${orderId}`
+    );
 
-        if (!response.ok) {
-            throw new Error(`HTTP error: ${response.status}`);
-        }
-
-        return await response.json();
+    if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
     }
+
+    return await response.json();
 }
 
 function calculateShippingCost(order) {
