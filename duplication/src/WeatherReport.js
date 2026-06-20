@@ -5,7 +5,7 @@ export class WeatherReport {
             const temp = forecast.getTemperature().toFixed(1);
             const condition = forecast.getCondition();
             const wind = forecast.getWindSpeed();
-            const period = forecast.getPeriod().slice(0, 1).toUpperCase() + forecast.getPeriod().slice(1);
+            const period = this.#formatPeriod(forecast)
 
             output.push(
                 `${period}: ${temp}°C, ${condition}, wind ${wind}km/h`
