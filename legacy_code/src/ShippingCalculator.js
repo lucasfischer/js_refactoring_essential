@@ -1,15 +1,7 @@
 export class ShippingCalculator {
     async calculateShipping(orderId) {
         try {
-            const response = await fetch(
-                `https://codemanship.co.uk/api/orders.php?orderId=${orderId}`
-            );
-
-            if (!response.ok) {
-                throw new Error(`HTTP error: ${response.status}`);
-            }
-
-            const order = await response.json();
+            const order = await this.fetchOrderDetails(orderId);
 
             switch (order.shippingType) {
                 case "STANDARD":
@@ -28,5 +20,17 @@ export class ShippingCalculator {
             console.log(e);
             return -1;
         }
+    }
+
+    async fetchOrderDetails(orderId) {
+        const response = await fetch(
+            `https://codemanship.co.uk/api/orders.php?orderId=${orderId}`
+        );
+
+        if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+        }
+
+        return await response.json();
     }
 }
