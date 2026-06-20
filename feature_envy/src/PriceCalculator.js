@@ -9,14 +9,14 @@ export class Product {
     #onSale
     
     constructor(price, onSale) {
-        this.price = price;
-        this.onSale = onSale;
+        this.#price = price;
+        this.#onSale = onSale;
     }
 
     getFinalPrice() {
-        let price = this.price;
+        let price = this.#price;
 
-        if (this.onSale) {
+        if (this.#onSale) {
             price = price * 0.8;
         }
 
