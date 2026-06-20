@@ -1,5 +1,5 @@
 export class X1 {
-    static m(lower_bound, upper_bound) {
+    static sum_of_squares(lower_bound, upper_bound) {
         let sum = 0;
 
         for (let i = lower_bound; i <= upper_bound; i++) {
