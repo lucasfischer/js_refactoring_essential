@@ -10,8 +10,4 @@ export class X1 {
         // Return accumulated sum
         return sum;
     }
-
-    static square(value) {
-        return value * value;
-    }
 }
