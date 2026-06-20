@@ -15,6 +15,16 @@ export class CustomerDisplayFormatter {
     }
 }
 
+function calculateStatus(daysSinceLastLogin) {
+    if (daysSinceLastLogin > 365) {
+        return "INACTIVE";
+    } else if (daysSinceLastLogin > 30) {
+        return "DORMANT";
+    }
+
+    return "ACTIVE";
+}
+
 export class CustomerService {
     isValidEmail(email) {
         return EmailValidator.isValid(email);
@@ -29,12 +39,6 @@ export class CustomerService {
     }
 
     determineAccountStatus(daysSinceLastLogin) {
-        if (daysSinceLastLogin > 365) {
-            return "INACTIVE";
-        } else if (daysSinceLastLogin > 30) {
-            return "DORMANT";
-        }
-
-        return "ACTIVE";
+        return calculateStatus(daysSinceLastLogin);
     }
 }
