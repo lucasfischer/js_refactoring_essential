@@ -1,12 +1,6 @@
 export class PriceCalculator {
     calculateFinalPrice(product) {
-        let price = product.getPrice();
-
-        if (product.isOnSale()) {
-            price = price * 0.8;
-        }
-
-        return price;
+        return product.getFinalPrice()
     }
 }
 
@@ -14,6 +8,16 @@ export class Product {
     constructor(price, onSale) {
         this.price = price;
         this.onSale = onSale;
+    }
+
+    getFinalPrice() {
+        let price = this.getPrice();
+
+        if (this.isOnSale()) {
+            price = price * 0.8;
+        }
+
+        return price;
     }
 
     getPrice() {
