@@ -12,6 +12,10 @@ export class WeatherReport {
             );
         }
     }
+
+    #formatPeriod(forecast) {
+        return forecast.getPeriod().slice(0, 1).toUpperCase() + forecast.getPeriod().slice(1)
+    }
 }
 
 export class Forecast {
