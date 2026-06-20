@@ -6,7 +6,6 @@ export class X1 {
             sum += Math.pow(i, 2)
         }
 
-        // Return accumulated sum
         return sum;
     }
 }
