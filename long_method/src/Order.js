@@ -16,14 +16,18 @@ export class Order {
         }
     }
 
-    summarise() {
-        this.validate()
-
-        // Subtotal calculation
+    calculateSubtotal() {
         let subtotal = 0.0;
         for (const item of this.#items) {
             subtotal += item.getPrice() * item.getQuantity();
         }
+        return subtotal
+    }
+
+    summarise() {
+        this.validate()
+
+        const subtotal = this.calculateSubtotal()
 
         // Discount rules
         let discount = 0.0;
