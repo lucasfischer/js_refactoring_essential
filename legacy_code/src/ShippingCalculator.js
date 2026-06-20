@@ -3,19 +3,7 @@ export class ShippingCalculator {
         try {
             const order = await this.fetchOrderDetails(orderId);
 
-            switch (order.shippingType) {
-                case "STANDARD":
-                    return order.weightKg * 0.5;
-
-                case "EXPRESS":
-                    return order.weightKg * 0.8 + order.distanceKm * 0.1;
-
-                case "OVERNIGHT":
-                    return order.weightKg * 1.2 + 25;
-
-                default:
-                    throw new Error(`Unknown shipping type: ${order.shippingType}`);
-            }
+            return calculateShippingCost(order);
         } catch (e) {
             console.log(e);
             return -1;
@@ -32,5 +20,21 @@ export class ShippingCalculator {
         }
 
         return await response.json();
+    }
+}
+
+function calculateShippingCost(order) {
+    switch (order.shippingType) {
+        case "STANDARD":
+            return order.weightKg * 0.5;
+
+        case "EXPRESS":
+            return order.weightKg * 0.8 + order.distanceKm * 0.1;
+
+        case "OVERNIGHT":
+            return order.weightKg * 1.2 + 25;
+
+        default:
+            throw new Error(`Unknown shipping type: ${order.shippingType}`);
     }
 }
